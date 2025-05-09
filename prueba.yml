@@ -1,0 +1,16 @@
+services:
+
+  nginx:
+    container_name: nginx
+    
+  mariadb:
+    container_name: mariadb
+  
+  wordpress:
+    container_name: wordpress
+
+volumes:
+  
+  wordpress_volume:
+
+  mariadb_volume:
