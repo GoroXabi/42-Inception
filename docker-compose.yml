@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+
+  nginx:
+    container_name: nginx
+    build: services/nginx/.
+    ports:
+    - "8080:443"
+  
+  wordpress:
+    container_name: wordpress
+    build: services/wordpress/.
+
+#  mariadb:
+#    container_name: mariadb
+#    build: services/mariadb
+
+#volumes:
+  
+#  wordpress_volume:
+
+#  mariadb_volume:
