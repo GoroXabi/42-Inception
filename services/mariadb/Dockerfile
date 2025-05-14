@@ -1,7 +1,11 @@
 FROM alpine:3.20.6
 
-EXPOSE 8080
+RUN apk add mariadb mariadb mariadb-client mariadb-common
+RUN mkdir /run/mysqld
+RUN mysql_install_db --user=mysql --ldata=/var/lib/mysql
 
-RUN apk add mariadb
+COPY mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
+COPY init.sql etc/mysql/init.sql
 
-CMD ["tail", "-f", "/dev/null"]
+CMD ["mysqld"]
+0

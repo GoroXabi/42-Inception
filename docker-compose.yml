@@ -5,14 +5,18 @@ services:
     build: services/nginx/.
     ports:
     - "8080:443"
+    volumes:
+    - ./web:/var/www/html
   
   wordpress:
     container_name: wordpress
     build: services/wordpress/.
-
-#  mariadb:
-#    container_name: mariadb
-#    build: services/mariadb
+    volumes:
+    - ./web:/var/www/html
+  
+  mariadb:
+    container_name: mariadb
+    build: services/mariadb
 
 #volumes:
   
