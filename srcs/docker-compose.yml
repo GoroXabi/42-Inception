@@ -7,9 +7,9 @@ services:
     container_name: nginx
     build: requirements/nginx/.
     ports:
-    - "8080:443"
+    - "443:443"
     volumes:
-    - ./web:/var/www/html
+    - /home/xortega/data/web:/var/www/html
     networks:
       - mynetwork
     restart: always
@@ -18,19 +18,20 @@ services:
     container_name: wordpress
     build: requirements/wordpress/.
     volumes:
-    - ./web:/var/www/html
+    - /home/xortega/data/web:/var/www/html
     expose:
       - 9000
     networks:
       - mynetwork
+    depends_on:
+      - mariadb
     restart: always
-
   
   mariadb:
     container_name: mariadb
     build: requirements/mariadb
     volumes:
-    - ./database:/var/lib/mysql
+    - /home/xortega/data/database:/var/lib/mysql
     expose:
     - 3306
     networks:

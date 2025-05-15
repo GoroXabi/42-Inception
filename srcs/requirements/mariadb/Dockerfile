@@ -8,4 +8,5 @@ COPY init.sql etc/mysql/init.sql
 COPY script.sh .
 
 RUN chmod +x script.sh
+
 CMD ["./script.sh"]
