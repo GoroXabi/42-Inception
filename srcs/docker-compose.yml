@@ -10,8 +10,13 @@ services:
     - "443:443"
     volumes:
     - /home/xortega/data/web:/var/www/html
+    secrets:
+      - selfsigned.key
+      - selfsigned.crt
     networks:
       - mynetwork
+    depends_on:
+      - wordpress
     restart: always
 
   wordpress:
@@ -38,3 +43,8 @@ services:
       - mynetwork
     restart: always
 
+secrets:
+  selfsigned.key:
+    file: ../secrets/selfsigned.key
+  selfsigned.crt:
+    file: ../secrets/selfsigned.crt
