@@ -1,5 +1,12 @@
 #!/bin/sh
 
+WP_ADMIN_E=$(cut -d '=' -f2 /run/secrets/wp_admin_e.txt)
+WP_ADMIN_N=$(cut -d '=' -f2 /run/secrets/wp_admin_n.txt)
+WP_ADMIN_P=$(cut -d '=' -f2 /run/secrets/wp_admin_p.txt)
+WP_U_PASS=$(cut -d '=' -f2 /run/secrets/wp_u_pass.txt)
+
+export WP_ADMIN_E WP_ADMIN_N WP_ADMIN_P WP_U_PASS
+
 sleep 3
 if ! [ -d /var/www/html/index.php ]; then
 echo DOWLOADING WORDPRESS

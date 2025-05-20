@@ -27,7 +27,12 @@ services:
     env_file:
       - .env
     volumes:
-    - /home/${USER}/data/web:/var/www/html
+      - /home/${USER}/data/web:/var/www/html
+    secrets:
+      - wp_admin_e.txt
+      - wp_admin_n.txt
+      - wp_admin_p.txt
+      - wp_u_pass.txt
     expose:
       - 9000
     networks:
@@ -42,9 +47,11 @@ services:
     env_file:
       - .env
     volumes:
-    - /home/${USER}/data/database:/var/lib/mysql
+      - /home/${USER}/data/database:/var/lib/mysql
+    secrets:
+      - db_pwd.txt
     expose:
-    - 3306
+      - 3306
     networks:
       - mynetwork
     restart: always
@@ -54,3 +61,13 @@ secrets:
     file: ../secrets/selfsigned.key
   selfsigned.crt:
     file: ../secrets/selfsigned.crt
+  db_pwd.txt:
+    file: ../secrets/db_pwd.txt
+  wp_admin_e.txt:
+    file: ../secrets/wp_admin_e.txt
+  wp_admin_n.txt:
+    file: ../secrets/wp_admin_n.txt
+  wp_admin_p.txt:
+    file: ../secrets/wp_admin_p.txt
+  wp_u_pass.txt:
+    file: ../secrets/wp_u_pass.txt

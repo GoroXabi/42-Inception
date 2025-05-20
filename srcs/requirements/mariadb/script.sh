@@ -1,5 +1,9 @@
 #!/bin/sh
 
+DB_PWD=$(cut -d '=' -f2 /run/secrets/db_pwd.txt)
+
+export DB_PWD
+
 mysql_install_db --user=mysql --ldata=/var/lib/mysql
 
 mkdir /etc/mysql
