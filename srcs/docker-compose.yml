@@ -6,10 +6,12 @@ services:
   nginx:
     container_name: nginx
     build: requirements/nginx/.
+    env_file:
+      - .env
     ports:
     - "443:443"
     volumes:
-    - /home/xortega/data/web:/var/www/html
+    - /home/${USER}/data/web:/var/www/html
     secrets:
       - selfsigned.key
       - selfsigned.crt
@@ -22,8 +24,10 @@ services:
   wordpress:
     container_name: wordpress
     build: requirements/wordpress/.
+    env_file:
+      - .env
     volumes:
-    - /home/xortega/data/web:/var/www/html
+    - /home/${USER}/data/web:/var/www/html
     expose:
       - 9000
     networks:
@@ -35,8 +39,10 @@ services:
   mariadb:
     container_name: mariadb
     build: requirements/mariadb
+    env_file:
+      - .env
     volumes:
-    - /home/xortega/data/database:/var/lib/mysql
+    - /home/${USER}/data/database:/var/lib/mysql
     expose:
     - 3306
     networks:
