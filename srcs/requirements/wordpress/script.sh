@@ -4,11 +4,10 @@ WP_ADMIN_E=$(cut -d '=' -f2 /run/secrets/wp_admin_e.txt)
 WP_ADMIN_N=$(cut -d '=' -f2 /run/secrets/wp_admin_n.txt)
 WP_ADMIN_P=$(cut -d '=' -f2 /run/secrets/wp_admin_p.txt)
 WP_U_PASS=$(cut -d '=' -f2 /run/secrets/wp_u_pass.txt)
-
-export WP_ADMIN_E WP_ADMIN_N WP_ADMIN_P WP_U_PASS
+DB_PWD=$(cut -d '=' -f2 /run/secrets/db_pwd.txt)
 
 sleep 3
-if ! [ -d /var/www/html/index.php ]; then
+if ! [ -d /var/www/html/wp-config.php ]; then
 echo DOWLOADING WORDPRESS
 cd /var/www/html
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar

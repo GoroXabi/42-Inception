@@ -33,6 +33,7 @@ services:
       - wp_admin_n.txt
       - wp_admin_p.txt
       - wp_u_pass.txt
+      - db_pwd.txt
     expose:
       - 9000
     networks:
@@ -49,7 +50,7 @@ services:
     volumes:
       - /home/${USER}/data/database:/var/lib/mysql
     secrets:
-      - db_pwd.txt
+      - db_pwd.txt    
     expose:
       - 3306
     networks:
