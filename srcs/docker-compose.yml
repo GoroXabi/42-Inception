@@ -32,7 +32,7 @@ services:
       - wp_admin_e.txt
       - wp_admin_n.txt
       - wp_admin_p.txt
-      - wp_u_pass.txt
+      - wp_user_p.txt
       - db_pwd.txt
     expose:
       - 9000
@@ -70,5 +70,5 @@ secrets:
     file: ../secrets/wp_admin_n.txt
   wp_admin_p.txt:
     file: ../secrets/wp_admin_p.txt
-  wp_u_pass.txt:
-    file: ../secrets/wp_u_pass.txt
+  wp_user_p.txt:
+    file: ../secrets/wp_user_p.txt
