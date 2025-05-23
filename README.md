@@ -1,4 +1,4 @@
-# 🚀 INCEPTION PROJECT
+# 🐋 INCEPTION PROJECT
 
 Welcome to **INCEPTION** — a **Dockerized WordPress setup** running with **Nginx** and **MariaDB**, secured via SSL, and fully configurable via environment and secret files.
 
