@@ -65,7 +65,7 @@ debug:
 down: 
 	docker compose -f srcs/docker-compose.yml down
 
-iinfo:
+info:
 	@printf "$(YELLOW)INCEPTION$(RESET):\n"
 	@printf "A $(BLUE)WordPress$(RESET) PAGE WITH A $(PINK)MariaDB$(RESET) DATABASE WORKING WITH $(GREEN)Nginx$(RESET) TO ALLOW SECURE TRAFFIC\n"
 	@printf "EACH ONE OF THESE SERVICES IS DIVIDED INTO INDIVIDUAL DOCKER CONTAINERS\n"
