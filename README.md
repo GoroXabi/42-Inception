@@ -10,7 +10,7 @@ After using `make` / `make all`:
 
 - ✏️ **Configure** the `.env` file in the `srcs/` directory.
 - 🔐 **Configure** the `.txt` files in the `secrets/` directory.
-Replace `<value>` with your desired values.
+- Replace `<value>` with your desired values.
 
 After that, you can use `make help` to explore the available options!
 
@@ -20,17 +20,17 @@ After that, you can use `make help` to explore the available options!
 
 This project sets up:
 
-- 🌐 A **WordPress** site (blue)
-- 🛢️ A **MariaDB** database (pink)
-- 🔐 A **secure Nginx** frontend (green)
+- 🌐 A **WordPress** site
+- 🛢️ A **MariaDB** database
+- 🔐 A **secure Nginx** frontend
 
 Each service runs in its own **Docker container**, connected via Docker network. Containers receive:
 
-- 📄 Environment variables from `srcs/.env` (cyan)
-- 🔒 Secrets from `secrets/*.txt` (red)
+- 📄 Environment variables from `srcs/.env`
+- 🔒 Secrets from `secrets/*.txt`
 - 🛠️ Necessary configuration files
 
-### 🔹 Nginx
+### 🟩 Nginx
 - Front-end entry point at **https://localhost:443**
 - Secured via **SSL** with `.crt` and `.key` stored in `secrets/`
 - Has access to the **volume** where the page is stored
@@ -39,15 +39,17 @@ Each service runs in its own **Docker container**, connected via Docker network.
 ### 🔷 WordPress
 - Serves the PHP content
 - Accepts requests from Nginx and responds via **FastCGI**
-- Stores files in a **shared volume**
+- Has access to the **volume** where the page is stored
 - On setup:
-  - Creates a database in the MariaDB container
+  - Configures the database in the MariaDB container
   - Adds a new user to the database
 - Communicates with MariaDB on port `3306`
 
 ### 🟣 MariaDB
+- On setup:
+  - Creates an empty database
 - Stores the WordPress database
-- Has access to the shared **volume**
+- Has access to it's own **volume**
 
 ---
 
@@ -106,10 +108,3 @@ Run `make <target>` to execute:
 
 ---
 
-## ✅ Final Notes
-
-- All configurations are modular and **easily modifiable** via text files.
-- Designed for **security**, **clarity**, and **educational use** as part of the **Inception project**.
-
----
-🛠️ Built with ❤️ using Docker, Nginx, WordPress, and MariaDB.
